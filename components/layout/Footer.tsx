@@ -1,9 +1,9 @@
+import Image from "next/image";
+
+import footer from "@/public/footer.svg";
+
 const Footer = (): JSX.Element => {
-  return (
-    <div>
-      <p>Footer Component</p>
-    </div>
-  );
+  return <Image alt="footer" src={footer} />;
 };
 
 export default Footer;
