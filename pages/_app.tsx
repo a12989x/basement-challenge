@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import "../css/global.css";
 
+import Layout from "../components/layout";
+
 function App({Component, pageProps}: AppProps) {
   return (
     <>
@@ -10,7 +12,9 @@ function App({Component, pageProps}: AppProps) {
         <title>Basement Supply</title>
         <meta content="Coding challenge for basement.studio." name="description" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
