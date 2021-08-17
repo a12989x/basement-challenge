@@ -1,7 +1,11 @@
+import Image from "next/image";
+
+import logo from "@/public/logo.svg";
+
 const Nav = (): JSX.Element => {
   return (
     <div>
-      <p>Nav Component</p>
+      <Image alt="Basement" src={logo} />
     </div>
   );
 };
