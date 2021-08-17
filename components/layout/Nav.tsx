@@ -1,4 +1,4 @@
-const Nav = () => {
+const Nav = (): JSX.Element => {
   return (
     <div>
       <p>Nav Component</p>
