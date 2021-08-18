@@ -1,16 +1,31 @@
-import type {NextPage} from "next";
-import Image from "next/image";
+import type {GetStaticProps, NextPage} from "next";
 
-import logo from "../public/logo.svg";
+// import getProducts from "@/utils/getProducts";
+import Header from "@/components/home/Header";
+import TextSlide from "@/components/home/TextSlide";
+import Asterisks from "@/components/home/Asterisks";
+import Products from "@/components/home/products";
+import {Product} from "product/types";
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const products: Product[] = await import("../product/mock.json").then((res) => res.default);
+  // const products: Product[] = await getProducts();
+
+  return {props: {products}};
+};
+
+const Home: NextPage<{products: Product[]}> = ({products}) => {
   return (
-    <div className="h-full flex bg-black">
-      <header className="m-auto text-white text-center">
-        <Image alt="Basement" src={logo} />
-        <h4>Lets get this party started</h4>
-      </header>
-    </div>
+    <section>
+      <Header />
+
+      <div className="relative">
+        <TextSlide />
+        <Asterisks />
+      </div>
+
+      <Products products={products} />
+    </section>
   );
 };
 
