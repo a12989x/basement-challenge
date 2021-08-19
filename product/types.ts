@@ -1,4 +1,4 @@
-interface Option {
+export interface Option {
   label: string;
   values: string[];
 }
@@ -7,5 +7,7 @@ export interface Product {
   image: string;
   price: number;
   name: string;
+  description: string;
   options: Option[];
+  qty?: number | undefined;
 }
