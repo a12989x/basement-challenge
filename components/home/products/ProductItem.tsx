@@ -1,10 +1,13 @@
 import Image from "next/image";
-import {useState} from "react";
+import {useContext, useState} from "react";
 
+import {CartContext} from "@/contexts/CartProvider";
+import {Product} from "@/product/types";
+import {ADD_PRODUCT} from "@/store/actions/cartActions";
 import world from "@/public/world.svg";
-import {Product} from "product/types";
 
 const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
+  const {dispatch} = useContext(CartContext);
   const [isHover, setIsHover] = useState(false);
 
   const handleHover = () => {
@@ -12,12 +15,13 @@ const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
   };
 
   return (
-    <section>
+    <section className="mx-auto w-full">
       <button
-        className="flex justify-center relative border-b-2"
+        className="flex justify-center relative w-full border-b-2"
         style={{
           background: "linear-gradient(0deg, #1D1D1D 0%, rgba(21, 21, 21, 0) 100%)",
         }}
+        onClick={() => dispatch({type: ADD_PRODUCT, payload: productItem})}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >
@@ -26,7 +30,7 @@ const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
         {isHover && (
           <>
             <div className="absolute transform" style={{top: "50%", transform: "translateY(-50%)"}}>
-              <Image alt="worl icon" src={world} />
+              <Image alt="world icon" src={world} />
             </div>
             <p
               className="absolute transform text-4xl text-black uppercase"
