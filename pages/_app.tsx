@@ -4,6 +4,7 @@ import Head from "next/head";
 import "../css/global.css";
 
 import Layout from "@/components/layout";
+import CartContextProvider from "contexts/CartProvider";
 
 function App({Component, pageProps}: AppProps) {
   return (
@@ -12,9 +13,11 @@ function App({Component, pageProps}: AppProps) {
         <title>Basement Supply</title>
         <meta content="Coding challenge for basement.studio." name="description" />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <CartContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CartContextProvider>
     </>
   );
 }
