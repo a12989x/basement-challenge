@@ -1,0 +1,4 @@
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const PLUS_ONE = "PLUS_ONE";
+export const MINUS_ONE = "MINUS_ONE";
