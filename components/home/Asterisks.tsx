@@ -5,7 +5,7 @@ import asteriskTwo from "@/public/asterisk-two.svg";
 
 const Asterisks = () => {
   return (
-    <div className="mx-auto relative top-0 h-full w-full max-w-screen-xl">
+    <div className="mx-auto relative top-0 h-full w-full max-w-screen-xl hidden lg:block">
       <div className="absolute -top-20 left-20">
         <Image alt="first asterisk" src={asteriskOne} />
       </div>
