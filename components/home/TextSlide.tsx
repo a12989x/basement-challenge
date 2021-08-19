@@ -6,7 +6,7 @@ const TextSlide = (): JSX.Element => {
     >
       <p
         className="my-4 absolute left-0 top-0 font-bold text-4xl animate-slideshow"
-        style={{width: "300%", transform: "translate3d(0, 0, 0)"}}
+        style={{width: "400%", transform: "translate3d(0, 0, 0)"}}
       >
         A man can’t have enough base­ment swag  —  A man can’t have enough base­ment swag
       </p>
