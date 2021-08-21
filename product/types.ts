@@ -10,4 +10,10 @@ export interface Product {
   description: string;
   options: Option[];
   qty?: number | undefined;
+  cart?: IOptionCart[];
+}
+
+export interface IOptionCart {
+  label: string;
+  value: string;
 }
