@@ -5,11 +5,14 @@ module.exports = {
     extend: {
       keyframes: {
         slideshow: {
-          "100%": {transform: "translateX(-200%)"},
+          "100%": {transform: "translateX(-100%)"},
         },
-        animations: {
-          slideshow: "slideshow 12s linear infinite",
-        },
+      },
+      animation: {
+        slideshow: "slideshow 20s linear infinite",
+      },
+      gridTemplateColumns: {
+        modal: "1fr auto",
       },
     },
   },
