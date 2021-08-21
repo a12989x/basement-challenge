@@ -24,11 +24,18 @@ const ProductItem = ({product}: {product: Product}): JSX.Element => {
         </div>
 
         <div className="grid gap-2">
-          <Quantity qty={product.qty} />
+          <Quantity id={product.id} qty={product.qty} />
 
           <div className="flex justify-between">
             {product.options.map((option) => (
-              <Label key={option.label} option={option} />
+              <Label
+                key={option.label}
+                currentValue={
+                  product.cart!.find((cartOption) => cartOption.label === option.label)!.value
+                }
+                id={product.id}
+                option={option}
+              />
             ))}
 
             <p className="text-3xl">${product.price}</p>
