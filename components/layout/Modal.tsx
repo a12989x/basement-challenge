@@ -46,15 +46,13 @@ const Modal = ({
           </div>
         </div>
 
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 text-4xl uppercase sm:border sm:border-r-0"
-          style={{
-            gridTemplateColumns: "1fr",
-          }}
-        >
-          <p className="px-8 py-6 border-b sm:border-r">Total: ${total}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-modal text-4xl uppercase sm:border sm:border-r-0">
+          <div className="px-8 py-6 grid grid-cols-2 border-b sm:border-r">
+            <p>Total:</p>
+            <p>${total}</p>
+          </div>
           <button
-            className="px-8 py-6  text-black uppercase"
+            className="px-8 py-6 text-black uppercase"
             style={{WebkitTextStroke: "2px #fff"}}
             // eslint-disable-next-line no-console
             onClick={() => console.log(state)}
