@@ -1,9 +1,7 @@
-import Image from "next/image";
-
-import Quantity from "./Quantity";
-import Label from "./Label";
-
 import {Product} from "@/product/types";
+import Image from "next/image";
+import Label from "./Label";
+import Quantity from "./Quantity";
 
 const ProductItem = ({product}: {product: Product}): JSX.Element => {
   return (
@@ -24,7 +22,9 @@ const ProductItem = ({product}: {product: Product}): JSX.Element => {
       <div className="flex flex-col justify-between">
         <div>
           <p className="text-4xl">{product.name}</p>
-          <p className="text-2xl capitalize text-gray-500">{product.description}</p>
+          <p className="text-2xl capitalize" style={{color: "#999"}}>
+            {product.description}
+          </p>
         </div>
 
         <div className="grid gap-2">
