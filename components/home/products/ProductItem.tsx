@@ -15,7 +15,7 @@ const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
   };
 
   return (
-    <section className="mx-auto w-full">
+    <section className="mx-auto w-full product">
       <button
         className="flex justify-center relative w-full border-b-2"
         style={{
