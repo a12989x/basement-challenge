@@ -20,7 +20,7 @@
       "@/utils/*": ["utils/*"],
       "@/contexts/*": ["contexts/*"],
       "@/store/*": ["store/*"],
-      "@/product/*": ["product/*"],
+      "@/product/*": ["product/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
