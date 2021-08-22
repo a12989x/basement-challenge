@@ -27,6 +27,7 @@ const Nav = (): JSX.Element => {
 
       <button
         className="py-2 px-5 sm:py-3.5 sm:px-8 font-bold uppercase border border-white rounded-full"
+        data-test-id="cart-button"
         onClick={() => setIsModalOpen(true)}
       >
         Cart ({state.length})
