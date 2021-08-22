@@ -13,7 +13,7 @@ const ProductItem = ({product}: {product: Product}): JSX.Element => {
       style={{gridTemplateColumns: "auto 1fr"}}
     >
       <div
-        className="px-0 sm:px-10"
+        className="px-0 flex justify-center items-center sm:px-10"
         style={{
           background: "linear-gradient(0deg, #1D1D1D 0%, rgba(21, 21, 21, 0) 100%)",
         }}
