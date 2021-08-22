@@ -1,4 +1,4 @@
-import {IOptionCart, Product} from "product/types";
+import {IOptionCart, Product} from "@/product/types";
 import {ADD_PRODUCT, CHANGE_LABEL, MINUS_ONE, PLUS_ONE} from "store/actions/cartActions";
 
 export type CartAction =

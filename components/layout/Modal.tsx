@@ -3,7 +3,7 @@ import React, {MouseEventHandler, useContext} from "react";
 import ProductItem from "./product-item";
 
 import {CartContext} from "@/contexts/CartProvider";
-import {Product} from "product/types";
+import {Product} from "@/product/types";
 
 const Modal = ({
   products,

@@ -1,6 +1,6 @@
 import ProductItem from "./ProductItem";
 
-import {Product} from "product/types";
+import {Product} from "@/product/types";
 
 const Products = ({products}: {products: Product[]}): JSX.Element => {
   return (
