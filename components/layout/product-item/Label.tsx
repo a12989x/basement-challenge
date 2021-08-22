@@ -17,13 +17,17 @@ const Label = ({
 
   return (
     <div className="flex items-center text-xl">
-      <p>{option.label}</p>
+      <p>{option.label}:</p>
 
       <div className="ml-4 grid gap-2 grid-flow-col">
         {option.values.map((value) => (
           <button
             key={value}
-            className={`px-2 ${value === currentValue ? "border rounded-full" : ""}`}
+            className={`px-2 border rounded-full transition duration-150 ease-in-out ${
+              value === currentValue
+                ? "border-opacity-100 hover:border-opacity-100"
+                : "border-opacity-0 hover:border-opacity-60"
+            }`}
             onClick={() =>
               dispatch({type: CHANGE_LABEL, payload: {id, cart: {label: option.label, value}}})
             }
