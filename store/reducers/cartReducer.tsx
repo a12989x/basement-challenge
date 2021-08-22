@@ -78,9 +78,6 @@ const cartReducer = (store: Product[], action: CartAction) => {
       return [...products];
     }
 
-    case DELETE_PRODUCT:
-      return [...store];
-
     default:
       return store;
   }
