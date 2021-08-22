@@ -3,8 +3,8 @@ import {useContext, useState} from "react";
 
 import {CartContext} from "@/contexts/CartProvider";
 import {Product} from "@/product/types";
-import {ADD_PRODUCT} from "@/store/actions/cartActions";
 import world from "@/public/world.svg";
+import {ADD_PRODUCT} from "@/store/actions/cartActions";
 
 const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
   const {dispatch} = useContext(CartContext);
@@ -35,7 +35,7 @@ const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
             <p
               className="absolute transform text-4xl text-black uppercase"
               style={{
-                WebkitTextStroke: "1px #fff",
+                WebkitTextStroke: "2px #fff",
                 top: "50%",
                 transform: "translateY(-50%)",
               }}
