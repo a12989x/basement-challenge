@@ -55,7 +55,7 @@ const Modal = ({
             <p data-test-id="total-modal">${total}</p>
           </div>
           <button
-            className="px-8 py-6 text-black uppercase transition transition-duration-150 ease-in-out hover:text-white hover:bg-white"
+            className="px-8 py-6 text-black uppercase transition transition-duration-150 ease-in-out hover:text-black hover:bg-white"
             style={{WebkitTextStroke: "2px #fff"}}
             // eslint-disable-next-line no-console
             onClick={() => console.log(state)}
