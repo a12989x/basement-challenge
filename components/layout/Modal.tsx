@@ -32,9 +32,12 @@ const Modal = ({
       className="h-full w-full bg-black fixed top-0 bottom-0 right-0 left-0 z-10 bg-opacity-70"
       data-test-id="cart-modal"
     >
-      <section className="fixed top-0 right-0 max-h-screen bg-black border border-t-0 border-r-0 overflow-y-auto z-10">
+      <section className="fixed top-0 right-0 max-h-screen bg-black sm:border border-t-0 border-r-0 overflow-y-auto z-10">
         <div className="py-10 px-8 flex flex-col content-end justify-end">
-          <button className="mb-2 ml-auto text-4xl uppercase" onClick={closeModal}>
+          <button
+            className="mb-4 sm:mb-8 ml-auto text-2xl sm:text-4xl uppercase"
+            onClick={closeModal}
+          >
             → Close
           </button>
           <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-10 uppercase text-9xl text-center font-bold">
@@ -49,8 +52,8 @@ const Modal = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-modal text-4xl uppercase sm:border sm:border-r-0">
-          <div className="px-8 py-6 grid grid-cols-2 border-b sm:border-r">
+        <div className="mx-8 sm:mx-0 grid grid-cols-1 sm:grid-cols-modal text-4xl uppercase sm:border sm:border-r-0">
+          <div className="px-8 py-6 flex justify-between sm:justify-start border-b sm:border-r">
             <p>Total:</p>
             <p data-test-id="total-modal">${total}</p>
           </div>

@@ -16,7 +16,7 @@ const Label = ({
   const {dispatch} = useContext(CartContext);
 
   return (
-    <div className="flex items-center text-xl">
+    <div className="flex items-center text-md sm:text-xl">
       <p>{option.label}:</p>
 
       <div className="ml-4 grid gap-2 grid-flow-col">
