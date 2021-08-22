@@ -7,7 +7,11 @@ import {Product} from "@/product/types";
 
 const ProductItem = ({product}: {product: Product}): JSX.Element => {
   return (
-    <div className="p-4 grid gap-5 border-2 uppercase" style={{gridTemplateColumns: "auto 1fr"}}>
+    <div
+      className="p-4 grid gap-5 border-2 uppercase"
+      data-test-id={`product-modal-${product.id}`}
+      style={{gridTemplateColumns: "auto 1fr"}}
+    >
       <div
         className="px-10"
         style={{
