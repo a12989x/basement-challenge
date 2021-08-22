@@ -1,11 +1,5 @@
-import {Product, IOptionCart} from "product/types";
-import {
-  ADD_PRODUCT,
-  CHANGE_LABEL,
-  DELETE_PRODUCT,
-  MINUS_ONE,
-  PLUS_ONE,
-} from "store/actions/cartActions";
+import {IOptionCart, Product} from "product/types";
+import {ADD_PRODUCT, CHANGE_LABEL, MINUS_ONE, PLUS_ONE} from "store/actions/cartActions";
 
 export type CartAction =
   | {type: "ADD_PRODUCT"; payload: Product}
@@ -45,8 +39,9 @@ const cartReducer = (store: Product[], action: CartAction) => {
       const productId = action.payload;
       const productToUpdate = products.find((product) => product.id === productId);
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
+      const currentQty = products[productToUpdateIndexOf].qty;
 
-      products[productToUpdateIndexOf].qty!++;
+      products[productToUpdateIndexOf].qty = currentQty! + 1;
 
       return [...products];
     }
@@ -56,10 +51,10 @@ const cartReducer = (store: Product[], action: CartAction) => {
       const productId = action.payload;
       const productToUpdate = products.find((product) => product.id === productId);
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
+      const currentQty = products[productToUpdateIndexOf].qty;
 
-      if (products[productToUpdateIndexOf].qty! > 0) {
-        products[productToUpdateIndexOf].qty!--;
-      } else return [...products];
+      if (currentQty! > 0) products[productToUpdateIndexOf].qty = currentQty! - 1;
+      else return [...products];
 
       return [...products];
     }
