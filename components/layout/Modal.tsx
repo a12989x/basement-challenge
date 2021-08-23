@@ -34,8 +34,12 @@ const Modal: FC<IModal> = ({products, closeModal}) => {
         name: item.name,
         quantity: item.qty,
         price: item.price * item.qty,
+        options: item.cart.map((cartItem) => ({[cartItem.label]: cartItem.value})),
       })),
     );
+
+    // eslint-disable-next-line no-console
+    console.log(`Total: ${total}`);
   };
 
   return (
