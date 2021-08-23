@@ -13,7 +13,7 @@ const Nav = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <nav className="pt-8 px-4 sm:px-0 mx-auto max-w-screen-xl flex justify-between">
+    <nav className="pt-8 px-4 mx-auto max-w-screen-xl flex justify-between">
       <div className="hidden sm:flex">
         <Image alt="Basement" src={logo} />
       </div>
