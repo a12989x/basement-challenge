@@ -1,12 +1,12 @@
+import {FC, useContext, useState} from "react";
 import Image from "next/image";
-import {useContext, useState} from "react";
 
 import {CartContext} from "@/contexts/CartProvider";
-import {Product} from "@/product/types";
+import {IProduct} from "@/product/types";
 import world from "@/public/world.svg";
 import {ADD_PRODUCT} from "@/store/actions/cartActions";
 
-const ProductItem = ({productItem}: {productItem: Product}): JSX.Element => {
+const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element => {
   const {dispatch} = useContext(CartContext);
   const [isHover, setIsHover] = useState(false);
 

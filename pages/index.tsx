@@ -5,16 +5,16 @@ import Header from "@/components/home/Header";
 import TextSlide from "@/components/home/TextSlide";
 import Asterisks from "@/components/home/Asterisks";
 import Products from "@/components/home/products";
-import {Product} from "@/product/types";
+import {IProduct} from "@/product/types";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products: Product[] = await import("../product/mock.json").then((res) => res.default);
+  const products: IProduct[] = await import("../product/mock.json").then((res) => res.default);
   // const products: Product[] = await getProducts();
 
   return {props: {products}};
 };
 
-const Home: NextPage<{products: Product[]}> = ({products}) => {
+const Home: NextPage<{products: IProduct[]}> = ({products}) => {
   return (
     <section>
       <Header />

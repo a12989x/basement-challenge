@@ -1,18 +1,16 @@
-import {useContext} from "react";
+import {FC, useContext} from "react";
 
 import {CartContext} from "@/contexts/CartProvider";
-import {Option} from "@/product/types";
+import {IOption, TID} from "@/product/types";
 import {CHANGE_LABEL} from "@/store/actions/cartActions";
 
-const Label = ({
-  option,
-  id,
-  currentValue,
-}: {
-  option: Option;
-  id: string;
+interface ILabelProps {
+  option: IOption;
+  id: TID;
   currentValue: string;
-}): JSX.Element => {
+}
+
+const Label: FC<ILabelProps> = ({option, id, currentValue}) => {
   const {dispatch} = useContext(CartContext);
 
   return (

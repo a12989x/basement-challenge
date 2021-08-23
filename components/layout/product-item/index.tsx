@@ -1,11 +1,12 @@
+import {FC} from "react";
 import Image from "next/image";
 
 import Label from "./Label";
 import Quantity from "./Quantity";
 
-import {Product} from "@/product/types";
+import {IProductCart} from "@/product/types";
 
-const ProductItem = ({product}: {product: Product}): JSX.Element => {
+const ProductItem: FC<{product: IProductCart}> = ({product}) => {
   return (
     <div
       className="p-4 grid gap-5 border-2 uppercase"

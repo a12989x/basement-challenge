@@ -1,23 +1,22 @@
-import React, {MouseEventHandler, useContext} from "react";
+import React, {FC, MouseEventHandler, useContext} from "react";
 
 import ProductItem from "./product-item";
 
 import {CartContext} from "@/contexts/CartProvider";
-import {Product} from "@/product/types";
+import {IProductCart} from "@/product/types";
 
-const Modal = ({
-  products,
-  closeModal,
-}: {
-  products: Product[];
+interface IModal {
+  products: IProductCart[];
   closeModal: MouseEventHandler<HTMLButtonElement>;
-}): JSX.Element => {
+}
+
+const Modal: FC<IModal> = ({products, closeModal}) => {
   const {state} = useContext(CartContext);
 
   const prices =
     products.length > 0
       ? products.reduce(
-          (accumulator: number[], currentValue: Product) =>
+          (accumulator: number[], currentValue: IProductCart) =>
             accumulator.concat(currentValue.price * currentValue.qty!),
           [],
         )
@@ -26,6 +25,18 @@ const Modal = ({
     products.length > 0
       ? prices.reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
+
+  const printCartInConsole = () => {
+    // eslint-disable-next-line no-console
+    console.table(
+      state.map((item) => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.qty,
+        price: item.price * item.qty,
+      })),
+    );
+  };
 
   return (
     <div
@@ -60,8 +71,7 @@ const Modal = ({
           <button
             className="px-8 py-6 text-black uppercase transition transition-duration-150 ease-in-out hover:text-black hover:bg-white"
             style={{WebkitTextStroke: "2px #fff"}}
-            // eslint-disable-next-line no-console
-            onClick={() => console.log(state)}
+            onClick={printCartInConsole}
           >
             Checkout
           </button>
