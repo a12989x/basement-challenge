@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Product", () => {
+describe("Product - Unit", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.get("section section section.product:first").as("productItem");
@@ -22,6 +22,13 @@ describe("Product", () => {
   it("should show add to cart text while hover", () => {
     cy.get("@productItem").find("button").trigger("mouseover");
     cy.get("@productItem").find("button p").should("contain.text", "Add to cart");
+  });
+});
+
+describe("Product - Integration", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.get("section section section.product:first").as("productItem");
   });
 
   it("should show world icon while hover", () => {

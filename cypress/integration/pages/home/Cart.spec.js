@@ -1,13 +1,20 @@
 /// <reference types="cypress" />
 
-describe("Cart", () => {
+describe("Cart - Unit", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.get("button[data-test-id='cart-button']").as("cartButton");
+  });
+
+  it("should render cart button component in the nav tag", () => {
+    cy.get("nav").find("button[data-test-id='cart-button']").should("be.visible");
+  });
+});
+
+describe("Cart - Integration", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.get("[data-test-id='cart-button']").as("cartButton");
-  });
-
-  it("should display cart button on nav", () => {
-    cy.get("@cartButton");
   });
 
   it("should open modal when cart button is clicked", () => {
