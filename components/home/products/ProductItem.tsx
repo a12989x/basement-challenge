@@ -1,13 +1,12 @@
-import {FC, useContext, useState} from "react";
-import Image from "next/image";
-
 import {CartContext} from "@/contexts/CartProvider";
 import {IProduct} from "@/product/types";
 import world from "@/public/world.svg";
 import {ADD_PRODUCT} from "@/store/actions/cartActions";
+import Image from "next/image";
+import {FC, useContext, useState} from "react";
 
 const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element => {
-  const {dispatch} = useContext(CartContext);
+  const {cartDispatch} = useContext(CartContext);
   const [isHover, setIsHover] = useState(false);
 
   const handleHover = () => {
@@ -21,7 +20,7 @@ const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element =>
         style={{
           background: "linear-gradient(0deg, #1D1D1D 0%, rgba(21, 21, 21, 0) 100%)",
         }}
-        onClick={() => dispatch({type: ADD_PRODUCT, payload: productItem})}
+        onClick={() => cartDispatch({type: ADD_PRODUCT, payload: productItem})}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >

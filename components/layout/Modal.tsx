@@ -11,7 +11,7 @@ interface IModal {
 }
 
 const Modal: FC<IModal> = ({products, closeModal}) => {
-  const {state} = useContext(CartContext);
+  const {cartState} = useContext(CartContext);
 
   const prices =
     products.length > 0
@@ -29,7 +29,7 @@ const Modal: FC<IModal> = ({products, closeModal}) => {
   const printCartInConsole = () => {
     // eslint-disable-next-line no-console
     console.table(
-      state.map((item) => ({
+      cartState.map((item) => ({
         id: item.id,
         name: item.name,
         quantity: item.qty,

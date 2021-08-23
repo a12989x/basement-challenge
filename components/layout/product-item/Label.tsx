@@ -1,8 +1,7 @@
-import {FC, useContext} from "react";
-
 import {CartContext} from "@/contexts/CartProvider";
 import {IOption, TID} from "@/product/types";
 import {CHANGE_LABEL} from "@/store/actions/cartActions";
+import {FC, useContext} from "react";
 
 interface ILabelProps {
   option: IOption;
@@ -11,7 +10,7 @@ interface ILabelProps {
 }
 
 const Label: FC<ILabelProps> = ({option, id, currentValue}) => {
-  const {dispatch} = useContext(CartContext);
+  const {cartDispatch} = useContext(CartContext);
 
   return (
     <div className="flex items-center text-md sm:text-xl">
@@ -27,7 +26,7 @@ const Label: FC<ILabelProps> = ({option, id, currentValue}) => {
                 : "border-opacity-0 hover:border-opacity-60"
             }`}
             onClick={() =>
-              dispatch({type: CHANGE_LABEL, payload: {id, cart: {label: option.label, value}}})
+              cartDispatch({type: CHANGE_LABEL, payload: {id, cart: {label: option.label, value}}})
             }
           >
             {value}

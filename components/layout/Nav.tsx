@@ -9,7 +9,7 @@ import hd from "@/public/hd-4k.svg";
 import logo from "@/public/logo.svg";
 
 const Nav = (): JSX.Element => {
-  const {state} = useContext(CartContext);
+  const {cartState} = useContext(CartContext);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
@@ -30,10 +30,10 @@ const Nav = (): JSX.Element => {
         data-test-id="cart-button"
         onClick={() => setIsModalOpen(true)}
       >
-        Cart ({state.length})
+        Cart ({cartState.length})
       </button>
 
-      {isModalOpen && <Modal closeModal={() => setIsModalOpen(false)} products={state} />}
+      {isModalOpen && <Modal closeModal={() => setIsModalOpen(false)} products={cartState} />}
     </nav>
   );
 };
