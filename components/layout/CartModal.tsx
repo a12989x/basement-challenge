@@ -72,8 +72,10 @@ const CartModal: FC<ICartModalProps> = ({products, closeModal}) => {
 
         <div className="mx-8 sm:mx-0 grid grid-cols-1 sm:grid-cols-modal text-4xl uppercase sm:border sm:border-r-0">
           <div className="px-8 py-6 flex justify-between sm:justify-start border-b sm:border-r">
-            <p>Total:</p>
-            <p data-test-id="total-modal">${total}</p>
+            <p>Total:</p>{" "}
+            <p className="ml-2" data-test-id="total-modal">
+              ${total}
+            </p>
           </div>
           <button
             className="px-8 py-6 text-black uppercase transition transition-duration-150 ease-in-out hover:text-black hover:bg-white"
