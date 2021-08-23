@@ -5,12 +5,12 @@ import ProductItem from "./product-item";
 import {CartContext} from "@/contexts/CartProvider";
 import {IProductCart} from "@/product/types";
 
-interface IModal {
+interface ICartModalProps {
   products: IProductCart[];
   closeModal: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Modal: FC<IModal> = ({products, closeModal}) => {
+const CartModal: FC<ICartModalProps> = ({products, closeModal}) => {
   const {cartState} = useContext(CartContext);
 
   const prices =
@@ -88,4 +88,4 @@ const Modal: FC<IModal> = ({products, closeModal}) => {
   );
 };
 
-export default Modal;
+export default CartModal;
