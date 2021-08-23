@@ -25,15 +25,20 @@ const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element =>
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >
-        <Image alt={productItem.name} height="538" src={productItem.image} width="400" />
+        <div className="transition duration-300 transform hover:scale-95">
+          <Image alt={productItem.name} height="538" src={productItem.image} width="400" />
+        </div>
 
         {isHover && (
           <>
-            <div className="absolute transform" style={{top: "50%", transform: "translateY(-50%)"}}>
+            <div
+              className="absolute transform pointer-events-none"
+              style={{top: "50%", transform: "translateY(-50%)"}}
+            >
               <Image alt="world icon" src={world} />
             </div>
             <p
-              className="absolute transform text-4xl text-black uppercase"
+              className="absolute transform text-4xl text-black uppercase pointer-events-none"
               style={{
                 WebkitTextStroke: "2px #fff",
                 top: "50%",
