@@ -9,6 +9,7 @@ module.exports = {
         },
       },
       animation: {
+        "spin-slow": "spin 10s linear infinite",
         slideshow: "slideshow 10s linear infinite",
       },
       gridTemplateColumns: {
