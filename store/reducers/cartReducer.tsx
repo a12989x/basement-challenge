@@ -64,8 +64,8 @@ const cartReducer = (store: IProductCart[], action: CartAction) => {
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
       const currentQty = products[productToUpdateIndexOf].qty;
 
-      if (currentQty! > 0) products[productToUpdateIndexOf].qty = currentQty - 1;
-      else if (currentQty < 2) products = products.filter((product) => product.id !== productId);
+      if (currentQty - 1 === 0) products = products.filter((product) => product.id !== productId);
+      else if (currentQty > 0) products[productToUpdateIndexOf].qty = currentQty - 1;
       else return [...products];
 
       updateCart(products);
