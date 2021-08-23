@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import Image from "next/image";
 
-import Modal from "./Modal";
+import CartModal from "./CartModal";
 
 import {CartContext} from "@/contexts/CartProvider";
 import favicon from "@/public/favicon.svg";
@@ -33,7 +33,7 @@ const Nav = (): JSX.Element => {
         Cart ({cartState.length})
       </button>
 
-      {isModalOpen && <Modal closeModal={() => setIsModalOpen(false)} products={cartState} />}
+      {isModalOpen && <CartModal closeModal={() => setIsModalOpen(false)} products={cartState} />}
     </nav>
   );
 };
