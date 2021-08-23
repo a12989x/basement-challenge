@@ -1,6 +1,7 @@
+import {useContext} from "react";
+
 import {CartContext} from "@/contexts/CartProvider";
 import {MINUS_ONE, PLUS_ONE} from "@/store/actions/cartActions";
-import {useContext} from "react";
 
 const Quantity = ({qty, id}: {qty: number | undefined; id: string}) => {
   const {cartDispatch} = useContext(CartContext);

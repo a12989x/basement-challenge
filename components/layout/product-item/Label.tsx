@@ -1,7 +1,8 @@
+import {FC, useContext} from "react";
+
 import {CartContext} from "@/contexts/CartProvider";
 import {IOption, TID} from "@/product/types";
 import {CHANGE_LABEL} from "@/store/actions/cartActions";
-import {FC, useContext} from "react";
 
 interface ILabelProps {
   option: IOption;

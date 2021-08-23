@@ -1,9 +1,10 @@
+import {FC, useContext, useState} from "react";
+import Image from "next/image";
+
 import {CartContext} from "@/contexts/CartProvider";
 import {IProduct} from "@/product/types";
 import world from "@/public/world.svg";
 import {ADD_PRODUCT} from "@/store/actions/cartActions";
-import Image from "next/image";
-import {FC, useContext, useState} from "react";
 
 const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element => {
   const {cartDispatch} = useContext(CartContext);
