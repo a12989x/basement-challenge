@@ -1,16 +1,16 @@
-import {IOptionCart, Product} from "@/product/types";
+import {IOptionCart, IProduct, IProductCart} from "@/product/types";
 import {ADD_PRODUCT, CHANGE_LABEL, MINUS_ONE, PLUS_ONE} from "store/actions/cartActions";
 
 export type CartAction =
-  | {type: "ADD_PRODUCT"; payload: Product}
+  | {type: "ADD_PRODUCT"; payload: IProduct}
   | {type: "DELETE_PRODUCT"}
   | {type: "PLUS_ONE"; payload: string}
   | {type: "MINUS_ONE"; payload: string}
   | {type: "CHANGE_LABEL"; payload: {id: string; cart: IOptionCart}};
 
-export const initialState: Product[] = [];
+export const initialState: IProductCart[] = [];
 
-const cartReducer = (store: Product[], action: CartAction) => {
+const cartReducer = (store: IProductCart[], action: CartAction) => {
   switch (action.type) {
     case ADD_PRODUCT: {
       const products = store;
@@ -19,13 +19,15 @@ const cartReducer = (store: Product[], action: CartAction) => {
 
       if (isProductInProducts) {
         const productIndexOf = products.indexOf(isProductInProducts);
+        const currentQty = products[productIndexOf].qty;
 
-        products[productIndexOf].qty! += 1;
-      } else
+        products[productIndexOf].qty = currentQty + 1;
+        // eslint-disable-next-line prettier/prettier
+      } else // @ts-ignore
         products.push({
           ...newProduct,
           qty: 1,
-          cart: action.payload.options.map((option) => ({
+          cart: newProduct.options.map((option) => ({
             label: option.label,
             value: option.values[0],
           })),
@@ -41,7 +43,7 @@ const cartReducer = (store: Product[], action: CartAction) => {
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
       const currentQty = products[productToUpdateIndexOf].qty;
 
-      products[productToUpdateIndexOf].qty = currentQty! + 1;
+      products[productToUpdateIndexOf].qty = currentQty + 1;
 
       return [...products];
     }
@@ -53,7 +55,7 @@ const cartReducer = (store: Product[], action: CartAction) => {
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
       const currentQty = products[productToUpdateIndexOf].qty;
 
-      if (currentQty! > 0) products[productToUpdateIndexOf].qty = currentQty! - 1;
+      if (currentQty! > 0) products[productToUpdateIndexOf].qty = currentQty - 1;
       else return [...products];
 
       return [...products];
@@ -66,14 +68,14 @@ const cartReducer = (store: Product[], action: CartAction) => {
       const productValue = action.payload.cart.value;
       const productToUpdate = products.find((product) => product.id === productId);
       const productToUpdateIndexOf = products.indexOf(productToUpdate!);
-      const productToUpdateCartLabel = products[productToUpdateIndexOf].cart!.find(
+      const productToUpdateCartLabel = products[productToUpdateIndexOf].cart.find(
         (cartOption) => cartOption.label === productLabel,
       );
-      const productToUpdateCartLabelIndexOf = products[productToUpdateIndexOf].cart!.indexOf(
+      const productToUpdateCartLabelIndexOf = products[productToUpdateIndexOf].cart.indexOf(
         productToUpdateCartLabel!,
       );
 
-      products[productToUpdateIndexOf].cart![productToUpdateCartLabelIndexOf].value = productValue;
+      products[productToUpdateIndexOf].cart[productToUpdateCartLabelIndexOf].value = productValue;
 
       return [...products];
     }
