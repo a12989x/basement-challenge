@@ -3,7 +3,7 @@ import {useContext} from "react";
 import {CartContext} from "@/contexts/CartProvider";
 import {MINUS_ONE, PLUS_ONE} from "@/store/actions/cartActions";
 
-const Quantity = ({qty, id}: {qty: number | undefined; id: string}) => {
+const Quantity = ({qty, id}: {qty: number; id: string}) => {
   const {cartDispatch} = useContext(CartContext);
 
   return (
