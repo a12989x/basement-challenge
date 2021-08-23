@@ -1,14 +1,19 @@
 import {IOptionCart, IProduct, IProductCart} from "@/product/types";
-import {ADD_PRODUCT, CHANGE_LABEL, MINUS_ONE, PLUS_ONE} from "store/actions/cartActions";
+import {ADD_PRODUCT, CHANGE_LABEL, MINUS_ONE, PLUS_ONE, LOAD_CART} from "store/actions/cartActions";
 
 export type CartAction =
   | {type: "ADD_PRODUCT"; payload: IProduct}
   | {type: "DELETE_PRODUCT"}
   | {type: "PLUS_ONE"; payload: string}
   | {type: "MINUS_ONE"; payload: string}
-  | {type: "CHANGE_LABEL"; payload: {id: string; cart: IOptionCart}};
+  | {type: "CHANGE_LABEL"; payload: {id: string; cart: IOptionCart}}
+  | {type: "LOAD_CART"; payload: IProductCart[]};
 
 export const initialState: IProductCart[] = [];
+
+const updateCart = (cartState: IProductCart[]) => {
+  localStorage.setItem("cartState", JSON.stringify(cartState));
+};
 
 const cartReducer = (store: IProductCart[], action: CartAction) => {
   switch (action.type) {
@@ -33,6 +38,8 @@ const cartReducer = (store: IProductCart[], action: CartAction) => {
           })),
         });
 
+      updateCart(products);
+
       return [...products];
     }
 
@@ -44,6 +51,8 @@ const cartReducer = (store: IProductCart[], action: CartAction) => {
       const currentQty = products[productToUpdateIndexOf].qty;
 
       products[productToUpdateIndexOf].qty = currentQty + 1;
+
+      updateCart(products);
 
       return [...products];
     }
@@ -57,6 +66,8 @@ const cartReducer = (store: IProductCart[], action: CartAction) => {
 
       if (currentQty! > 0) products[productToUpdateIndexOf].qty = currentQty - 1;
       else return [...products];
+
+      updateCart(products);
 
       return [...products];
     }
@@ -76,6 +87,16 @@ const cartReducer = (store: IProductCart[], action: CartAction) => {
       );
 
       products[productToUpdateIndexOf].cart[productToUpdateCartLabelIndexOf].value = productValue;
+
+      updateCart(products);
+
+      return [...products];
+    }
+
+    case LOAD_CART: {
+      const products = action.payload;
+
+      updateCart(products);
 
       return [...products];
     }
