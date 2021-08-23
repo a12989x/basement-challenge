@@ -1,7 +1,7 @@
 import {createContext, Dispatch, ReactNode, useEffect, useReducer} from "react";
 
 import {IProductCart} from "@/product/types";
-import cartReducer, {CartAction, initialState} from "store/reducers/cartReducer";
+import cartReducer, {CartAction, initialState} from "@/store/reducers/cartReducer";
 import {LOAD_CART} from "@/store/actions/cartActions";
 
 interface IContext {
