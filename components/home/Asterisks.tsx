@@ -6,10 +6,10 @@ import asteriskTwo from "@/public/asterisk-two.svg";
 const Asterisks = () => {
   return (
     <div className="mx-auto relative top-0 h-full w-full max-w-screen-xl hidden lg:block">
-      <div className="absolute -top-20 left-20">
+      <div className="absolute -top-20 left-20 animate-spin-slow">
         <Image alt="first asterisk" src={asteriskOne} />
       </div>
-      <div className="absolute bottom-8 right-20">
+      <div className="absolute bottom-8 right-20 animate-spin-slow">
         <Image alt="second asterisk" src={asteriskTwo} />
       </div>
     </div>
