@@ -9,6 +9,20 @@ import {ADD_PRODUCT} from "@/store/actions/cartActions";
 const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element => {
   const {cartDispatch} = useContext(CartContext);
   const [isHover, setIsHover] = useState(false);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  const handleClick = () => {
+    try {
+      cartDispatch({type: ADD_PRODUCT, payload: productItem});
+      setIsAddedToCart(true);
+    } catch (err) {
+      throw new Error("Error to add the product to cart");
+    }
+
+    setTimeout(() => {
+      setIsAddedToCart(false);
+    }, 300);
+  };
 
   const handleHover = () => {
     setIsHover((v) => !v);
@@ -21,7 +35,7 @@ const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element =>
         style={{
           background: "linear-gradient(0deg, #1D1D1D 0%, rgba(21, 21, 21, 0) 100%)",
         }}
-        onClick={() => cartDispatch({type: ADD_PRODUCT, payload: productItem})}
+        onClick={handleClick}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >
@@ -45,7 +59,7 @@ const ProductItem: FC<{productItem: IProduct}> = ({productItem}): JSX.Element =>
                 transform: "translateY(-50%)",
               }}
             >
-              Add to cart
+              {isAddedToCart ? "Added To Cart" : "Add to cart"}
             </p>
           </>
         )}
