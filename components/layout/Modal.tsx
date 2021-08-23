@@ -64,6 +64,9 @@ const Modal: FC<IModal> = ({products, closeModal}) => {
           <div className="grid gap-4">
             {products.length > 0 &&
               products.map((product) => <ProductItem key={product.id} product={product} />)}
+            {!cartState.length && (
+              <p className="text-4xl sm:text-2xl text-center">Your cart is empty</p>
+            )}
           </div>
         </div>
 
