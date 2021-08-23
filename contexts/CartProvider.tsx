@@ -21,7 +21,7 @@ const CartContextProvider = ({children}: {children: ReactNode}) => {
     // @ts-ignore
     const cart: IProductCart[] = JSON.parse(localStorage.getItem("cartState"));
 
-    cartDispatch({type: LOAD_CART, payload: cart});
+    if (cart) cartDispatch({type: LOAD_CART, payload: cart});
   }, []);
 
   return <CartContext.Provider value={{cartState, cartDispatch}}>{children}</CartContext.Provider>;
