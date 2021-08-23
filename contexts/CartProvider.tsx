@@ -1,7 +1,8 @@
-import {createContext, Dispatch, ReactNode, useReducer} from "react";
+import {createContext, Dispatch, ReactNode, useEffect, useReducer} from "react";
 
 import {IProductCart} from "@/product/types";
 import cartReducer, {CartAction, initialState} from "store/reducers/cartReducer";
+import {LOAD_CART} from "@/store/actions/cartActions";
 
 interface IContext {
   cartState: IProductCart[];
@@ -15,6 +16,13 @@ export const CartContext = createContext<IContext>({
 
 const CartContextProvider = ({children}: {children: ReactNode}) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    // @ts-ignore
+    const cart: IProductCart[] = JSON.parse(localStorage.getItem("cartState"));
+
+    cartDispatch({type: LOAD_CART, payload: cart});
+  }, []);
 
   return <CartContext.Provider value={{cartState, cartDispatch}}>{children}</CartContext.Provider>;
 };
