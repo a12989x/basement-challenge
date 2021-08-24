@@ -13,8 +13,9 @@ describe("Modal", () => {
   });
 
   it("should decrement the quantity of the product when minus sign is clicked", () => {
+    cy.get("[data-test-id^=product-modal-] .quantity button:last").click();
     cy.get("[data-test-id^=product-modal-] .quantity button:first").click();
-    cy.get("[data-test-id^=product-modal-] span").should("contain.text", "0");
+    cy.get("[data-test-id^=product-modal-] span").should("contain.text", "1");
   });
 
   it("should increment the quantity one by one of the product when plus sign or minus sign is clicked more times", () => {
@@ -24,11 +25,8 @@ describe("Modal", () => {
     cy.get("[data-test-id^=product-modal-] span").should("contain.text", "3");
   });
 
-  it("should stop when quantity of the product is 0 when minus sign is clicked", () => {
+  it("should remove the product when quantity is 1", () => {
     cy.get("[data-test-id^=product-modal-] .quantity button:first").click();
-    cy.get("[data-test-id^=product-modal-] span").should("contain.text", "0");
-    cy.get("[data-test-id^=product-modal-] .quantity button:first").click();
-    cy.get("[data-test-id^=product-modal-] span").should("contain.text", "0");
   });
 
   it("should change the total according with the quantity of a product", () => {

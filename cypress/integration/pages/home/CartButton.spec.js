@@ -1,17 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Cart - Unit", () => {
-  beforeEach(() => {
-    cy.visit("/");
-    cy.get("button[data-test-id='cart-button']").as("cartButton");
-  });
-
-  it("should render cart button component in the nav tag", () => {
-    cy.get("nav").find("button[data-test-id='cart-button']").should("be.visible");
-  });
-});
-
-describe("Cart - Integration", () => {
+describe("Cart", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.get("[data-test-id='cart-button']").as("cartButton");
