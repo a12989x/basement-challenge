@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import Image from "next/image";
+import {AnimatePresence} from "framer-motion";
 
 import CartModal from "./CartModal";
 
@@ -33,7 +34,9 @@ const Nav = (): JSX.Element => {
         Cart ({cartState.length})
       </button>
 
-      {isModalOpen && <CartModal closeModal={() => setIsModalOpen(false)} products={cartState} />}
+      <AnimatePresence>
+        {isModalOpen && <CartModal closeModal={() => setIsModalOpen(false)} products={cartState} />}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -1,4 +1,5 @@
 import type {GetStaticProps, NextPage} from "next";
+import {motion} from "framer-motion";
 
 // import getProducts from "@/utils/getProducts";
 import Header from "@/components/home/Header";
@@ -16,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<{products: IProduct[]}> = ({products}) => {
   return (
-    <section>
+    <motion.section animate={{y: 0, opacity: 1}} initial={{y: 50, opacity: 0}}>
       <Header />
 
       <div className="relative">
@@ -25,7 +26,7 @@ const Home: NextPage<{products: IProduct[]}> = ({products}) => {
       </div>
 
       <Products products={products} />
-    </section>
+    </motion.section>
   );
 };
 

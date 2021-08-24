@@ -1,5 +1,6 @@
 import {FC} from "react";
 import Image from "next/image";
+import {motion} from "framer-motion";
 
 import Label from "./Label";
 import Quantity from "./Quantity";
@@ -8,9 +9,10 @@ import {IProductCart} from "@/product/types";
 
 const ProductItem: FC<{product: IProductCart}> = ({product}) => {
   return (
-    <div
+    <motion.div
       className="p-4 grid gap-5 border-2 uppercase"
       data-test-id={`product-modal-${product.id}`}
+      exit={{x: 50, opacity: 0}}
       style={{gridTemplateColumns: "auto 1fr"}}
     >
       <div
@@ -49,7 +51,7 @@ const ProductItem: FC<{product: IProductCart}> = ({product}) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
