@@ -1,7 +1,7 @@
 const TextSlide = (): JSX.Element => {
   return (
     <div
-      className="overflow-x-hidden w-full relative border-t border-b"
+      className="overflow-hidden w-full relative border-t border-b"
       style={{height: "74px", transform: "translate3d(0, 0, 0)"}}
     >
       <p
