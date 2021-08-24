@@ -1,10 +1,11 @@
 import React, {FC, MouseEventHandler, useContext} from "react";
-import {motion, AnimatePresence} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 
 import ProductItem from "./product-item";
 
 import {CartContext} from "@/contexts/CartProvider";
 import {IProductCart} from "@/product/types";
+import {simpleOpacity, simpleXAndOpacity} from "animations";
 
 interface ICartModalProps {
   products: IProductCart[];
@@ -45,17 +46,16 @@ const CartModal: FC<ICartModalProps> = ({products, closeModal}) => {
 
   return (
     <motion.div
-      animate={{opacity: 1}}
+      animate="show"
       className="h-full w-full bg-black fixed top-0 bottom-0 right-0 left-0 z-10 bg-opacity-70"
       data-test-id="cart-modal"
-      exit={{opacity: 0}}
-      initial={{opacity: 0}}
+      exit="exit"
+      initial="hidden"
+      variants={simpleOpacity}
     >
       <motion.section
-        animate={{x: 0, opacity: 1}}
         className="fixed top-0 right-0 max-h-screen overflow-x-hidden bg-black sm:border border-t-0 border-r-0 overflow-y-auto z-10"
-        exit={{x: 50, opacity: 0}}
-        initial={{x: 50, opacity: 1}}
+        variants={simpleXAndOpacity}
       >
         <div className="py-10 px-8 flex flex-col content-end justify-end">
           <button

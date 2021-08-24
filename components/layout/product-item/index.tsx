@@ -6,14 +6,16 @@ import Label from "./Label";
 import Quantity from "./Quantity";
 
 import {IProductCart} from "@/product/types";
+import {simpleXAndOpacity} from "animations";
 
 const ProductItem: FC<{product: IProductCart}> = ({product}) => {
   return (
     <motion.div
       className="p-4 grid gap-5 border-2 uppercase"
       data-test-id={`product-modal-${product.id}`}
-      exit={{x: 50, opacity: 0}}
+      exit="exit"
       style={{gridTemplateColumns: "auto 1fr"}}
+      variants={simpleXAndOpacity}
     >
       <div
         className="px-0 flex justify-center items-center sm:px-10"

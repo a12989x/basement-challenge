@@ -7,6 +7,7 @@ import TextSlide from "@/components/home/TextSlide";
 import Asterisks from "@/components/home/Asterisks";
 import Products from "@/components/home/products";
 import {IProduct} from "@/product/types";
+import {simpleYAndOpacity} from "animations";
 
 export const getStaticProps: GetStaticProps = async () => {
   const products: IProduct[] = await import("../product/mock.json").then((res) => res.default);
@@ -17,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<{products: IProduct[]}> = ({products}) => {
   return (
-    <motion.section animate={{y: 0, opacity: 1}} initial={{y: 50, opacity: 0}}>
+    <motion.section animate="show" initial="hidden" variants={simpleYAndOpacity}>
       <Header />
 
       <div className="relative">
