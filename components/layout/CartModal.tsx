@@ -45,13 +45,18 @@ const CartModal: FC<ICartModalProps> = ({products, closeModal}) => {
 
   return (
     <motion.div
-      animate={{x: 0, opacity: 1}}
+      animate={{opacity: 1}}
       className="h-full w-full bg-black fixed top-0 bottom-0 right-0 left-0 z-10 bg-opacity-70"
       data-test-id="cart-modal"
-      exit={{x: 50, opacity: 0}}
-      initial={{x: 50, opacity: 1}}
+      exit={{opacity: 0}}
+      initial={{opacity: 0}}
     >
-      <section className="fixed top-0 right-0 max-h-screen overflow-x-hidden bg-black sm:border border-t-0 border-r-0 overflow-y-auto z-10">
+      <motion.section
+        animate={{x: 0, opacity: 1}}
+        className="fixed top-0 right-0 max-h-screen overflow-x-hidden bg-black sm:border border-t-0 border-r-0 overflow-y-auto z-10"
+        exit={{x: 50, opacity: 0}}
+        initial={{x: 50, opacity: 1}}
+      >
         <div className="py-10 px-8 flex flex-col content-end justify-end">
           <button
             className="mb-4 sm:mb-8 ml-auto text-2xl sm:text-4xl uppercase"
@@ -91,7 +96,7 @@ const CartModal: FC<ICartModalProps> = ({products, closeModal}) => {
             Checkout
           </button>
         </div>
-      </section>
+      </motion.section>
     </motion.div>
   );
 };
