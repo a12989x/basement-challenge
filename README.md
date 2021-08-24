@@ -1,36 +1,38 @@
 # basement.studio challenge: b. Supply
 
-![Basement studio](./public/og.png "basement.supply")
+Codigo para [basement.studio challenge: b. Supply](https://github.com/goncy/basement-challenge).
 
-Tenemos que implementar el diseño de [este figma](https://www.figma.com/file/BYjaSbdPyhEL0ucneDlIQ0/Dev-Challenge?node-id=1%3A218) (el equipo de diseño trabajó mucho en el figma, para esta primera etapa podemos omitir detalles mientras todo ande), como el backend todavía no está desarrollado el cliente nos dejó un mock en `/product/mock.json`.
+E-commerce de una pagina con el diseño de [este figma](https://www.figma.com/file/BYjaSbdPyhEL0ucneDlIQ0/Dev-Challenge?node-id=1%3A218) construido en Next JS.
 
-El checkout no está listo tampoco así que con imprimir en consola el pedido al clickear en `CHECKOUT` alcanza.
+[Preview](https://basement-challenge-swart.vercel.app/) del challenge.
 
-El cliente quiere que usemos NextJS, TypeScript y Tailwind, pero por suerte nos dió el proyecto con todo ya configurado. También nos dejó instalada su fuente y algunos assets en la carpeta `public`.
+## Stack
 
-También nos dijo que no era requerido, pero nos iba a pagar un importante bono por cada punto extra:
+- [Next JS](https://nextjs.org/) como framework.
+- [Typescript](https://www.typescriptlang.org/) javascipt estricto.
+- [Tailwind CSS](https://tailwindcss.com/) CSS framework.
+- [Cypress](https://www.cypress.io/) para tests de integración.
+- [ESLint](https://eslint.org/) para encontrar y resolver problemas en el codigo.
+- [Prettier](https://prettier.io/) para formatear el codigo
+- [Framer Motion](https://www.framer.com/motion/) solo para pequeñas animaciones.
 
-- Tests de integración con Cypress
-- Tests unitarios con Jest y React Testing Library
-- Guardar el cart del usuario en localStorage
-  - Nos aseguró que los productos siempre van a estar y nunca se van a modificar, así que podemos guardalos como queramos.
+## ¿Como funciona? 🤔
 
-También nos dijo que nos iba a pagar bonos por cualquier idea original que se nos ocurra agregar.
+Se construyo un provider para el manejo del estado para el carrito usando `useContext` y `useReducer` que encapsula a toda la aplicación, los productos se obtienen de un mockup local renderizados en la pagina de inicio.
 
-Nos pidió que el código sea lo más prolijo posible, para que cuando el backend este implementado los cambios sean mínimos para poder integrarlo.
+Cuando se agrega un producto al carrito el estado se actualizara con `dispatch` `type: ADD_PRODUCT` mandando todo el objeto del producto actual añadiendo valores adicionales como la cantidad y valores por defecto como el tamaño.
 
-Como el cliente no sabe de desarrollo nos pidió que despleguemos nuestra aplicación en algún lado y le mandemos un link para ver el progreso.
+Se puede agregar o disminuir la cantidad de un producto con `dispatch` `type PLUS_ONE` ó `type MINUS_ONE` mandando el id del producto, cuando la cantidad es uno y se presiona el boton `-` este se eliminara del carrito automaticamente.
 
-## Corriendo el proyecto
+Los datos del carrito se guardan en el `local storage` y se muestran en consola cuando se presiona el boton de `checkout`.
 
-```bash
-# Instalar dependencias del proyecto
-npm install
+## TODOs
 
-# Correr el servidor de desarrollo
-npm run dev
-```
+- Tests unitarios con [Jest](https://jestjs.io/) y [React testing library](https://testing-library.com/).
+- Optimizacion de renderizacion de los componentes.
+- Arreglar deslizamiento del texto `A man can’t have enough base­ment swag` en la pagina de inicio para pantallas pequeñas.
 
-## Modalidad de entrega
+## Instalación
 
-- Repositorio público subido a GitHub, Gitlab, Bitbucket.
+- Instalar las dependencias del proyecto: `npm install`.
+- Correr el servidorde desarrollo: `npm run dev`.
